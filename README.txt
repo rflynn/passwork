@@ -15,4 +15,4 @@ References:
   4. Zachary M. Seward and Albert Sun "The Top 50 Gawker Media Passwords" Wall Street Journal, Dec 13, 2010
       <http://blogs.wsj.com/digits/2010/12/13/the-top-50-gawker-media-passwords/>
   5. Abhinav Kaiser "List of Banned Passwords on Twitter" Technopedia, Dec 27, 2009
-      http://technopedia.info/tech/2009/12/27/list-of-banned-passwords-on-twitter.html
+      <http://technopedia.info/tech/2009/12/27/list-of-banned-passwords-on-twitter.html>
