@@ -21,9 +21,7 @@ var passwork = {
 	// number of tests
 	max_score : 10,
 	score    : function(s) {
-		if (s == '')
-			return 0;
-		return passwork.max_score
+		score = passwork.max_score
 			- passwork.tooshort(s)
 			- passwork.weak_len(s)
 			- passwork.no_lcase(s)
@@ -34,6 +32,11 @@ var passwork = {
 			- passwork.toocommon(s)
 			- passwork.common_english_dictionary_vowel_and_consonant_pattern(s)
 			- passwork.ssn_pattern(s)
+		// scale up score for very short passwords; produces more intuitive
+		// and useful output than a raw score at short lengths
+		if (s.length <= 4)
+			score = Math.min(score, s.length)
+		return score
 	},
 	brutally_common : {
 		/* "1234..."    */ '123456':1, '1234567':1, '12345678':1, '123456789':1, '654321':1, 'abc123':1, '123abc':1,
