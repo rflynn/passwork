@@ -13,9 +13,13 @@ var passwork = {
 	no_ucase : function(s) { return s.toUpperCase() == s },
 	no_digit : function(s) { return s.search(/\d/) == -1 },
 	no_punct : function(s) { return s.search(/([^\s\w]|_)/) == -1 },
-	a_repeat : function(s) { return s.match(/^(.+)\1+$/) ? 1 : 0 },
-	toocommon: function(s) { return passwork.brutally_common[s] ? 1 : 0 },
-	max_score : 8,
+	a_repeat : function(s) { return s.match(/^(.{1,4})\1+$/) ? 1 : 0 },
+	toocommon: function(s) { return passwork.brutally_common[s.toLowerCase()] ? 1 : 0 },
+	// ~20% of the english dictionary matches
+	common_english_dictionary_vowel_and_consonant_pattern : function(s) { return s.match(/^[^aeiou\W]{1,2}[aeiou][^aeiou\W]{1,3}[aeiou]?[^aeiou\W]{0,3}$/i) ? 1 : 0 },
+	ssn_pattern : function(s) { return s.match(/^\d{3}-?\d{2}-?\d{4}$/) ? 1 : 0 },
+	// number of tests
+	max_score : 10,
 	score    : function(s) {
 		if (s == '')
 			return 0;
@@ -28,6 +32,8 @@ var passwork = {
 			- passwork.no_punct(s)
 			- passwork.a_repeat(s)
 			- passwork.toocommon(s)
+			- passwork.common_english_dictionary_vowel_and_consonant_pattern(s)
+			- passwork.ssn_pattern(s)
 	},
 	brutally_common : {
 		/* "1234..."    */ '123456':1, '1234567':1, '12345678':1, '123456789':1,
