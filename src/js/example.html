@@ -25,7 +25,7 @@ code { color:green }
 			-->
 			<input type="password" id="password" name="pass" onKeyUp="javascript:passwork.update_progress(this.value)">
 			<!-- progrss bar added here -->
-			<div id="pass_strength" style="display:inline-block">Strength:</div>
+			<div id="pass_strength" style="display:inline-block; visibility:hidden">Strength:</div>
 		</div>
 	</div>
 
@@ -56,7 +56,9 @@ code { color:green }
 
 <!-- generate progress bar and append after "Strength:" -->
 <script language="javascript">
-document.getElementById("pass_strength").appendChild(passwork.progress_bar())
+ps = document.getElementById('pass_strength')
+ps.appendChild(passwork.progress_bar())
+ps.style['visibility'] = 'visible'
 </script>
 
 </body>
