@@ -1,6 +1,7 @@
 
-People use shitty passwords.
+Author: Ryan Flynn <parseerror+passwork@gmail.com>
 
-Given a password, this library will quantify that shittiness so your
-application can decide whether or not to accept a user's password.
+Password strength measuring toolkit.
+Make it easier for sites to encourage users to choose stronger passwords.
+Includes a variety of tests and convience methods for updating "strength-meter" as user types.
 
