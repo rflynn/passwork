@@ -134,7 +134,8 @@ passwork.confirm = function (confirm_string, pass_string, pass_confirm_name, okc
 	results = [[ '...', waitcolor ],
 		   [ '!!',  badcolor ],
 		   [ 'OK',  okcolor ]]
-	var idx = (confirm_string.length >= pass_string.length) + (confirm_string == pass_string)
+	var idx = (confirm_string != '' && confirm_string.length >= pass_string.length) +
+		  (confirm_string != '' && confirm_string == pass_string)
 	pc = document.getElementById(pass_confirm_name)
 	pc.style['color'] = results[idx][1]
 	pc.innerText = results[idx][0]
