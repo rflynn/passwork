@@ -45,7 +45,7 @@ var passwork = {
 		/* sports teams */ 'cowboys':1, 'eagles':1, 'dolphins':1, 'yankees':1, 'lakers':1, 'giants':1, 'arsenal':1, 'liverpool':1,
 		/* oddly common */ 'monkey':1, 'jesus':1,
 		/* computer     */ 'computer':1, 'internet':1, 'microsoft':1, 'windows':1, 'apple':1,
-		/* pop culture  */ 'batman':1, 'superman':1, 'bond007':1, 'starwars':1, 'pokemon':1, 'hannah':1, 'tigger':1,
+		/* pop culture  */ 'batman':1, 'superman':1, 'bond007':1, 'starwars':1, 'pokemon':1, 'hannah':1, 'tigger':1, 'thx1138':1,
 		/* boys         */ 'master':1, 'shadow':1, 'killer':1, 'dragon':1, 'pussy':1, 'vagina':1,
 		/* girls        */ 'princess':1,
 		/* months       */ 'january':1, 'february':1, 'march':1, 'april':1, 'may':1, 'june':1, 'july':1, 'august':1, 'september':1, 'october':1, 'november':1, 'december':1,
