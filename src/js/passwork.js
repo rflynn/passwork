@@ -9,8 +9,8 @@ var passwork = {
 	// tests. each tests a single weakness and returns 1 if weakness exists and 0 otherwise
 	tooshort : function(s) { return s.length < passwork.min_len },
 	weak_len : function(s) { return s.length < passwork.strong_len },
-	no_lcase : function(s) { return s.toLowerCase() == s },
-	no_ucase : function(s) { return s.toUpperCase() == s },
+	no_lower : function(s) { return s.toLowerCase() == s },
+	no_upper : function(s) { return s.toUpperCase() == s },
 	no_digit : function(s) { return s.search(/\d/) == -1 },
 	no_punct : function(s) { return s.search(/([^\s\w]|_)/) == -1 },
 	a_repeat : function(s) { return s.match(/^(.{1,4})\1+$/) ? 1 : 0 },
@@ -24,8 +24,8 @@ var passwork = {
 		score = passwork.max_score
 			- passwork.tooshort(s)
 			- passwork.weak_len(s)
-			- passwork.no_lcase(s)
-			- passwork.no_ucase(s)
+			- passwork.no_lower(s)
+			- passwork.no_upper(s)
 			- passwork.no_digit(s)
 			- passwork.no_punct(s)
 			- passwork.a_repeat(s)
