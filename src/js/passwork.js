@@ -1,7 +1,7 @@
 //
 // Test potential password for various deficiencies
+// Make it easier for developers/websites to encourage users to choose stronger passwords
 // Author: Ryan Flynn <parseerror+passwork@gmail.com>
-//
 
 var passwork = {
 	min_len  : 7,
