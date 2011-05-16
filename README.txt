@@ -21,3 +21,5 @@ References:
       <http://www.whatsmypass.com/the-top-500-worst-passwords-of-all-time>
   7. Graham Cluley "Passwords used by the Conficker worm", Sophos, Jan 16, 2009
       <http://nakedsecurity.sophos.com/2009/01/16/passwords-conficker-worm/>
+  8. Bruce Schneier "Real-World Passwords", Schneier on Security, Dec 14 2006
+      <http://www.schneier.com/blog/archives/2006/12/realworld_passw.html>
