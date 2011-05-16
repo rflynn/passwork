@@ -6,6 +6,7 @@
 var passwork = {
 	min_len  : 7,
 	strong_len : 12,
+	// tests. each tests a single weakness and returns 1 if weakness exists and 0 otherwise
 	tooshort : function(s) { return s.length < passwork.min_len },
 	weak_len : function(s) { return s.length < passwork.strong_len },
 	no_lcase : function(s) { return s.toLowerCase() == s },
