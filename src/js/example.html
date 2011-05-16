@@ -51,10 +51,13 @@ code { color:green }
 </form>
 </div>
 
-<!-- include passwork library -->
-<script language="javascript" src="passwork.js"></script>
+<!--
+	onload: run this stuff first
+	include library
+	make "Strength:" visible and insert progress bar
+-->
 
-<!-- generate progress bar and append after "Strength:" -->
+<script language="javascript" src="passwork.js"></script>
 <script language="javascript">
 ps = document.getElementById('pass_strength')
 ps.appendChild(passwork.progress_bar())
