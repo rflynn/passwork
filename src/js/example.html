@@ -1,0 +1,63 @@
+<html>
+<head>
+<title>passwork example</title>
+<style type="text/css">
+body { font-size:150% }
+code { color:green }
+</style>
+</head>
+<body>
+
+<h1><code>passwork</code> javascript example</h1>
+
+<div style="display:table">
+<form>
+
+	<div style="display:table-row">
+		<div style="display:table-cell; text-align:right">
+			<label>Password:</label>
+		</div>
+		<div style="display:table-cell">
+			<!--
+			foreach text change:
+				calculate score
+				update progress bar
+			-->
+			<input type="password" id="password" name="pass" onKeyUp="javascript:passwork.update_progress(this.value)">
+			<!-- progrss bar added here -->
+			<div id="pass_strength" style="display:inline-block">Strength:</div>
+		</div>
+	</div>
+
+	<div style="display:table-row">
+		<div style="display:table-cell; text-align:right">
+			<label>Confirm Password:</label>
+		</div>
+		<div style="display:table-cell">
+			<!--
+			foreach text change:
+				calculate confirm equality
+				update $(passwork_confirm)
+			-->
+			<input type="password" id="password2" name="pass2"
+				onKeyUp="javascript:passwork.confirm(this.value,
+					document.getElementById('password').value,
+					'passwork_confirm')"
+				onBlur="javascript:document.getElementById('passwork_confirm').innerText=''">
+			<div id="passwork_confirm" style="display:inline-block"></div>
+		</div>
+	</div>
+
+</form>
+</div>
+
+<!-- include passwork library -->
+<script language="javascript" src="passwork.js"></script>
+
+<!-- generate progress bar and append after "Strength:" -->
+<script language="javascript">
+document.getElementById("pass_strength").appendChild(passwork.progress_bar())
+</script>
+
+</body>
+</html>
