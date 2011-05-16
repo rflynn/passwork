@@ -87,7 +87,7 @@ class Passwork
 		assert( $p->aRepeat('rr'));
 		assert( $p->aRepeat('rere'));
 		assert( $p->aRepeat('reprep'));
-		assert( $p->tooCommon('1234'));
+		assert( $p->tooCommon('123456'));
 		assert(!$p->tooCommon('Uncomm0nPassword!@#$%^&'));
 		assert(!$p->commonEnglishDictionaryVowelAndConsonantPattern(''));
 		assert(!$p->commonEnglishDictionaryVowelAndConsonantPattern('abc'));
