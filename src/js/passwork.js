@@ -1,7 +1,8 @@
-/*
- * Test potential password for various deficiencies
- * Author: Ryan Flynn <parseerror+passwork@gmail.com>
- */
+//
+// Test potential password for various deficiencies
+// Author: Ryan Flynn <parseerror+passwork@gmail.com>
+//
+
 var passwork = {
 	min_len  : 7,
 	strong_len : 12,
@@ -43,94 +44,69 @@ var passwork = {
 		/* war games    */ 'joshua':1,
 		/* x-files      */ 'trustno1':1,
 		/* irc/bash     */ 'hunter2':1,
-	},
-
-	/* below here are convenience functions for display */
-
-	/*
-	 * build progress bar as a table via DOM
-	 * one cell for each passwork score function
-	 * [ ][ ][ ][ ][ ][ ][ ]
-	 */
-	progress_bar : function(bgcolor, padding)
-	{
-		bgcolor = bgcolor || '#ddd'
-		padding = padding || 8
-		var tbl = document.createElement('table')
-		var tblB = document.createElement('tbody')
-		var row = document.createElement('tr')
-		for (var i = 0; i < passwork.max_score; i++)
-		{
-			var cell = document.createElement('td')
-			cell.setAttribute('id', 'progress' + i)
-			cell.style['background-color'] = bgcolor
-			row.appendChild(cell)
-		}
-		tblB.appendChild(row)
-		tbl.appendChild(tblB)
-		tbl.setAttribute('id', 'passwork_progress_bar')
-		tbl.setAttribute('border', '0')
-		tbl.setAttribute('cellpadding', padding)
-		tbl.setAttribute('cellspacing', '1')
-		tbl.setAttribute('style', 'display:inline; vertical-align:middle')
-		return tbl
-	},
-
-	/*
-	 * callback. on password change, calculate score and update progressbar as appropriate.
-	 */
-	update_progress : function(pass_string, okcolor, emptycolor, progress_bar_id)
-	{
-		// default arguments
-		okcolor = okcolor || 'green'
-		emptycolor = emptycolor || '#ddd'
-		progress_bar_id = progress_bar_id || 'passwork_progress_bar'
-		score = passwork.score(pass_string)
-		bar = document.getElementById(progress_bar_id)
-		box = bar.rows[0].cells
-		for (var i = 0; i < box.length; i++)
-		{
-			box[i].style['background-color'] = score > i ? okcolor : emptycolor
-		}
-		return score
-	},
-
-	/*
-	 * callback. on password confirmation change, calculate confirmation equality and display
-	 */
-	confirm : function(confirm_string, pass_string, pass_confirm_name, okcolor, badcolor, waitcolor)
-	{
-		pass_confirm_name = pass_confirm_name || 'pass_confirm_name'
-		okcolor = okcolor || 'green'
-		badcolor = badcolor || 'red'
-		waitcolor = waitcolor || '#ccc'
-		results = [[ '...', waitcolor ],
-			   [ '!!',  badcolor ],
-			   [ 'OK',  okcolor ]]
-		var idx = (confirm_string.length >= pass_string.length) + (confirm_string == pass_string)
-		pc = document.getElementById(pass_confirm_name)
-		pc.style['color'] = results[idx][1]
-		pc.innerText = results[idx][0]
 	}
-
 };
 
-/*
- *  test passwork methods
- */
+// below here are convenience functions for display
 
-function AssertException(msg) { this.msg = msg }
-AssertException.prototype.toString = function ()
+//
+// build progress bar as a table via DOM
+// one cell for each passwork score function
+// [ ][ ][ ][ ][ ][ ][ ]
+//
+passwork.progress_bar = function (bgcolor, padding)
 {
-	return 'AssertException: ' + this.msg;
-}
-function assert(exp, msg)
+	bgcolor = bgcolor || '#ddd'
+	padding = padding || 8
+	var tbl = document.createElement('table')
+	var tblB = document.createElement('tbody')
+	var row = document.createElement('tr')
+	for (var i = 0; i < passwork.max_score; i++)
+	{
+		var cell = document.createElement('td')
+		cell.setAttribute('id', 'progress' + i)
+		cell.style['background-color'] = bgcolor
+		row.appendChild(cell)
+	}
+	tblB.appendChild(row)
+	tbl.appendChild(tblB)
+	tbl.setAttribute('id', 'passwork_progress_bar')
+	tbl.setAttribute('border', '0')
+	tbl.setAttribute('cellpadding', padding)
+	tbl.setAttribute('cellspacing', '1')
+	tbl.setAttribute('style', 'display:inline; vertical-align:middle')
+	return tbl
+};
+
+// callback. on password change, calculate score and update progressbar as appropriate.
+passwork.update_progress = function (pass_string, okcolor, emptycolor, progress_bar_id)
 {
-	if (+exp == 0)
-		throw new AssertException(msg);
-}
+	// default arguments
+	okcolor = okcolor || 'green'
+	emptycolor = emptycolor || '#ddd'
+	progress_bar_id = progress_bar_id || 'passwork_progress_bar'
+	score = passwork.score(pass_string)
+	bar = document.getElementById(progress_bar_id)
+	box = bar.rows[0].cells
+	for (var i = 0; i < box.length; i++)
+	{
+		box[i].style['background-color'] = score > i ? okcolor : emptycolor
+	}
+	return score
+};
 
-assert(!passwork.a_repeat('ab'), "a_repeat(ab)")
-assert( passwork.a_repeat('aa'), "a_repeat(aa)")
-
-
+// callback. on password confirmation change, calculate confirmation equality and display
+passwork.confirm = function (confirm_string, pass_string, pass_confirm_name, okcolor, badcolor, waitcolor)
+{
+	pass_confirm_name = pass_confirm_name || 'pass_confirm_name'
+	okcolor = okcolor || 'green'
+	badcolor = badcolor || 'red'
+	waitcolor = waitcolor || '#ccc'
+	results = [[ '...', waitcolor ],
+		   [ '!!',  badcolor ],
+		   [ 'OK',  okcolor ]]
+	var idx = (confirm_string.length >= pass_string.length) + (confirm_string == pass_string)
+	pc = document.getElementById(pass_confirm_name)
+	pc.style['color'] = results[idx][1]
+	pc.innerText = results[idx][0]
+};
