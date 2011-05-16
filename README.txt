@@ -16,3 +16,5 @@ References:
       <http://blogs.wsj.com/digits/2010/12/13/the-top-50-gawker-media-passwords/>
   5. Abhinav Kaiser "List of Banned Passwords on Twitter" Technopedia, Dec 27, 2009
       <http://technopedia.info/tech/2009/12/27/list-of-banned-passwords-on-twitter.html>
+  6. "The Top 500 Worst Passwords of All Time", What's My Pass?, Nov 30, 2008
+      <http://www.whatsmypass.com/the-top-500-worst-passwords-of-all-time>
