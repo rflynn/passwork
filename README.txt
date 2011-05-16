@@ -2,8 +2,9 @@
 Author: Ryan Flynn <parseerror+passwork@gmail.com>
 
 Password strength measuring toolkit.
-Make it easier for sites to encourage users to choose stronger passwords.
-Includes a variety of tests and convience methods for updating "strength-meter" as user types.
+Make it easier for developers/sites to encourage users to choose stronger passwords.
+Includes a variety of tests and convenience methods.
+Include backend classes and frontend in javascript for real-time password checking "strength-meter" as user types.
 
 References:
   1. Imperva "Consumer Password Worst Practices" 2010
