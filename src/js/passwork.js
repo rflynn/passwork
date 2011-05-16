@@ -79,18 +79,20 @@ passwork.progress_bar = function (bgcolor, padding)
 };
 
 // callback. on password change, calculate score and update progressbar as appropriate.
-passwork.update_progress = function (pass_string, okcolor, emptycolor, progress_bar_id)
+passwork.update_progress = function (pass_string, okcolor, emptycolor, tooshortcolor, progress_bar_id)
 {
 	// default arguments
 	okcolor = okcolor || 'green'
 	emptycolor = emptycolor || '#ddd'
+	tooshortcolor = tooshortcolor || 'red'
 	progress_bar_id = progress_bar_id || 'passwork_progress_bar'
 	score = passwork.score(pass_string)
 	bar = document.getElementById(progress_bar_id)
 	box = bar.rows[0].cells
+	tooshort = passwork.tooshort(pass_string)
 	for (var i = 0; i < box.length; i++)
 	{
-		box[i].style['background-color'] = score > i ? okcolor : emptycolor
+		box[i].style['background-color'] = score > i ? tooshort ? tooshortcolor : okcolor : emptycolor
 	}
 	return score
 };
