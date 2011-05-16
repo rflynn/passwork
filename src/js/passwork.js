@@ -65,7 +65,7 @@ var passwork = {
 				   'corvette':1, 'mustang':1, 'porsche':1, 'camaro':1, 'ferrari':1, 'diablo':1, 'mercedes':1,
 				   'harley':1, 'yahama':1,
 				   'topgun':1, 'maverick':1,
-		/* girls        */ 'princess':1,
+		/* girls        */ 'princess':1, 'sunshine':1,
 		/* rednecks     */ 'nascar':1,
 		/* nearby items */ 'samsung':1, 'intel':1, 'dell':1, 'linksys':1, 'verizon':1, 'sony':1, 'sprint':1,
 				   'compaq':1, 'presario':1,
