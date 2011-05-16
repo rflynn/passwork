@@ -15,8 +15,6 @@ class Passwork
 	const MaxScore = 10;
 
 	// convenience ratings
-	const AcceptableScore = 6;
-	const OKScore = 7;
 	const GoodScore = 8;
 
 	private $MinLen = 7;
@@ -42,7 +40,7 @@ class Passwork
 			return 'too short';
 		else if ($this->tooCommon($pass))
 			return 'too common';
-		else if ($this->score($pass) < Passwork::AcceptableScore)
+		else if ($this->score($pass) < Passwork::GoodScore)
 			return 'too weak';
 		return ''; // no problem
 	}
