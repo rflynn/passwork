@@ -8,7 +8,7 @@ code { color:green }
 </head>
 <body>
 
-<h1><code>passwork</code> javascript example</h1>
+<h1>interactive <code>passwork</code> javascript example</h1>
 
 <div style="display:table">
 <form>
@@ -23,7 +23,8 @@ code { color:green }
 				calculate score
 				update progress bar
 			-->
-			<input type="password" id="password" name="pass" onKeyUp="javascript:passwork.update_progress(this.value)">
+			<input type="password" id="password" name="pass" size="16"
+				onKeyUp="javascript:passwork.update_progress(this.value)">
 			<!-- progrss bar added here -->
 			<div id="pass_strength" style="display:inline-block; visibility:hidden">Strength:</div>
 		</div>
@@ -39,7 +40,7 @@ code { color:green }
 				calculate confirm equality
 				update $(passwork_confirm)
 			-->
-			<input type="password" id="password2" name="pass2"
+			<input type="password" id="password2" name="pass2" size="16"
 				onKeyUp="javascript:passwork.confirm(this.value,
 					document.getElementById('password').value,
 					'passwork_confirm')"
@@ -51,6 +52,9 @@ code { color:green }
 </form>
 </div>
 
+<em>Examples:</em>
+<div id="examples" style="display:table; font-size:smaller"></div>
+
 <!--
 	onload: run this stuff first
 	include library
@@ -59,9 +63,34 @@ code { color:green }
 
 <script language="javascript" src="passwork.js"></script>
 <script language="javascript">
-ps = document.getElementById('pass_strength')
+// set up "Strength:"
+var ps = document.getElementById('pass_strength')
 ps.appendChild(passwork.progress_bar())
 ps.style['visibility'] = 'visible'
+
+var ex = document.getElementById('examples')
+var passwords = [
+	'', 'a', 'aa', 'qwerty', 'abcabc', 'aaaaaa', 'abcdabcd', 'abc123',
+	'123456', '1234567', 'michael', 'abcd!', 'not$bad', 
+	'3venbetter!', 'BetterPasswd9', '$str0ngPass!' ]
+for (var i in passwords)
+{
+	var r = document.createElement('div'); r.style['display'] = 'table-row'
+	var p = document.createElement('div'); p.style['display'] = 'table-cell'
+	p.innerText = passwords[i]
+	var b = document.createElement('div'); b.style['display'] = 'table-cell'; b.style['padding'] = '2px'
+	barid = 'congress' + i
+	bar = passwork.progress_bar(barid, '#ddd', 7)
+	b.appendChild(bar)
+	var prob = document.createElement('div'); p.style['display'] = 'table-cell'
+	prob.innerText = passwork.problem(passwords[i])
+	r.appendChild(p)
+	r.appendChild(b)
+	r.appendChild(prob)
+	ex.appendChild(r)
+	passwork.update_progress(passwords[i], barid)
+}
+
 </script>
 
 </body>
