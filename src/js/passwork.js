@@ -19,9 +19,10 @@ var passwork = {
 	common_english_dictionary_vowel_and_consonant_pattern : function(s) { return s.match(/^[^aeiou\W]{1,2}[aeiou][^aeiou\W]{1,3}[aeiou]?[^aeiou\W]{0,3}$/i) ? 1 : 0 },
 	ssn_pattern : function(s) { return s.match(/^\d{3}-?\d{2}-?\d{4}$/) ? 1 : 0 },
 	// number of tests
-	max_score : 10,
+	Max_Score : 10,
+	Good_Score : 8,
 	score    : function(s) {
-		score = passwork.max_score
+		score = passwork.Max_Score
 			- passwork.tooshort(s)
 			- passwork.weak_len(s)
 			- passwork.no_lower(s)
@@ -37,6 +38,14 @@ var passwork = {
 		if (s.length <= 4)
 			score = Math.min(score, s.length)
 		return score
+	},
+	// default convenience function which describes why a password is unacceptable
+	problem : function(s)
+	{
+		if (passwork.tooshort(s)) return 'too short'
+		if (passwork.toocommon(s)) return 'too common'
+		if (passwork.score(s) < passwork.Good_Score) return 'too weak'
+		return '' // ok
 	},
 	brutally_common : {
 		/* "1234..."    */ '1234':1, '12345':1, '123456':1, '1234567':1, '12345678':1, '123456789':1, '1234567890':1, '654321':1, 'abc123':1, '123abc':1,
@@ -84,14 +93,15 @@ var passwork = {
 // one cell for each passwork score function
 // [ ][ ][ ][ ][ ][ ][ ]
 //
-passwork.progress_bar = function (bgcolor, padding)
+passwork.progress_bar = function (progress_bar_id, bgcolor, padding)
 {
+	progress_bar_id = progress_bar_id || 'passwork_progress_bar'
 	bgcolor = bgcolor || '#ddd'
 	padding = padding || 8
 	var tbl = document.createElement('table')
 	var tblB = document.createElement('tbody')
 	var row = document.createElement('tr')
-	for (var i = 0; i < passwork.max_score; i++)
+	for (var i = 0; i < passwork.Max_Score; i++)
 	{
 		var cell = document.createElement('td')
 		cell.setAttribute('id', 'progress' + i)
@@ -100,7 +110,7 @@ passwork.progress_bar = function (bgcolor, padding)
 	}
 	tblB.appendChild(row)
 	tbl.appendChild(tblB)
-	tbl.setAttribute('id', 'passwork_progress_bar')
+	tbl.setAttribute('id', progress_bar_id)
 	tbl.setAttribute('border', '0')
 	tbl.setAttribute('cellpadding', padding)
 	tbl.setAttribute('cellspacing', '1')
@@ -109,20 +119,22 @@ passwork.progress_bar = function (bgcolor, padding)
 };
 
 // callback. on password change, calculate score and update progressbar as appropriate.
-passwork.update_progress = function (pass_string, okcolor, emptycolor, tooshortcolor, progress_bar_id)
+passwork.update_progress = function (pass_string, progress_bar_id, okcolor, emptycolor, failcolor)
 {
 	// default arguments
+	progress_bar_id = progress_bar_id || 'passwork_progress_bar'
 	okcolor = okcolor || 'green'
 	emptycolor = emptycolor || '#ddd'
-	tooshortcolor = tooshortcolor || 'red'
-	progress_bar_id = progress_bar_id || 'passwork_progress_bar'
+	failcolor = failcolor || 'red'
 	score = passwork.score(pass_string)
 	bar = document.getElementById(progress_bar_id)
 	box = bar.rows[0].cells
 	tooshort = passwork.tooshort(pass_string)
+	toocommon = passwork.toocommon(pass_string)
+	tooweak = score < passwork.Good_Score
 	for (var i = 0; i < box.length; i++)
 	{
-		box[i].style['background-color'] = score > i ? tooshort ? tooshortcolor : okcolor : emptycolor
+		box[i].style['background-color'] = score > i ? tooshort || toocommon || tooweak ? failcolor : okcolor : emptycolor
 	}
 	return score
 };
