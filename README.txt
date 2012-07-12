@@ -23,3 +23,5 @@ References:
       <http://nakedsecurity.sophos.com/2009/01/16/passwords-conficker-worm/>
   8. Bruce Schneier "Real-World Passwords", Schneier on Security, Dec 14 2006
       <http://www.schneier.com/blog/archives/2006/12/realworld_passw.html>
+  9. Anders Nilsson "Statistics About Yahoo Leak of 450,000 plain-text accounts", Säkerhetsbloggen, Jul 12 2012
+      <http://blog.eset.se/statistics-about-yahoo-leak-of-450-000-plain-text-accounts/>

@@ -74,6 +74,7 @@ var passwork = {
 				   'corvette':1, 'mustang':1, 'porsche':1, 'camaro':1, 'ferrari':1, 'diablo':1, 'mercedes':1,
 				   'harley':1, 'yahama':1,
 				   'topgun':1, 'maverick':1,
+				   'ninja':1,
 		/* girls        */ 'princess':1, 'sunshine':1,
 		/* rednecks     */ 'nascar':1,
 		/* nearby items */ 'samsung':1, 'intel':1, 'dell':1, 'linksys':1, 'verizon':1, 'sony':1, 'sprint':1,
@@ -83,6 +84,7 @@ var passwork = {
 				   'cocacola':1, 'pepsi':1, 'mountaindew':1, 'codered':1,
 		/* pop music    */ '8675309':1, 'blink182':1, 'ou812':1, 'rush2112':1,
 		/* famous passwd*/ 'joshua':1, 'trustno1':1, 'z10n0101':1, 'hunter':1, 'hunter2':1,
+		/* other        */ 'welcome':1
 	}
 };
 
